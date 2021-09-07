@@ -86,7 +86,7 @@ struct gudang namabarang() {
 	FILE *fp = fopen("./daftarbarang.txt", "r");
     struct gudang gud;
     
-    while(fscanf(fp, "%[^#]#%d#%lld\n", gud.namabarang, &gud.qtybarang, &gud.hargajual) != EOF) {
+    while(fscanf(fp, "%d#%[^#]#%d#%lld\n", &gud.code, gud.namabarang, &gud.qtybarang, &gud.hargajual) != EOF) {
              if(strcmp(namabarang, gud.namabarang) == 0) {
               return gud;
 	    }
@@ -648,9 +648,10 @@ void caribarang(){
 		  char all_Item[][15] = {"Adaptor", "Headset", "Mouse", "Printer", "Speaker"};
 		  int n = 5;
 		  char barang[15];
-		    printf("Item: %s\nQty: %d\nPrice: %lld\n", temp.namabarang, temp.qtybarang, temp.hargajual);
+		    printf("\nCode   : %d\nItem   : %s\nQty    : %d\nPrice  : %lld\n", temp.code, temp.namabarang, temp.qtybarang, temp.hargajual);
 		    printf("\n");
 		    
+		    system("pause");
 		    system("cls");
 			menuadmin();
 }
@@ -1123,4 +1124,3 @@ void historitransaksi(){
     system("cls");
     menukasir();
 }
-
